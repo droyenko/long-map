@@ -24,18 +24,25 @@ public class LongMapImplTest {
         map.put(50, "duplicate");
         assertEquals(101, map.size());
         assertEquals("duplicate", map.get(50));
+        map.put(500, "collision");
+        assertEquals(102, map.size());
+
     }
 
     @Test
     public void testGet() {
         assertEquals("value_44", map.get(44));
         assertNull(map.get(200));
+        map.put(500, "collision");
+        assertEquals("collision", map.get(500));
     }
 
     @Test
     public void testRemove() {
         assertEquals("value_50", map.remove(50));
         assertEquals(99, map.size());
+        assertNull(map.remove(500));
+
     }
 
     @Test
